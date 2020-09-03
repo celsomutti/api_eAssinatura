@@ -9,9 +9,9 @@
     $agente = $_POST['agente'];
 
     // Query database for row exist or not
-    $sql = "SELECT * FROM listagem_jornal WHERE cod_agente in (:agente) order by des_endereco";
+    $sql = "SELECT * FROM listagem_jornal WHERE cod_agente in (" . $agente . ") order by des_endereco";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':agente', $agente, PDO::PARAM_STR);
+    //$stmt->bindParam(':agente', $agente, PDO::PARAM_STR);
     $stmt->execute();
     if($stmt->rowCount())
     {
